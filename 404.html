@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting&hellip; &middot; Kairion Group</title>
+  <meta name="robots" content="noindex,follow">
+  <!-- No-JavaScript fallback: send visitors to the homepage -->
+  <noscript><meta http-equiv="refresh" content="0; url=/"></noscript>
+  <style>
+    html,body{height:100%;margin:0;}
+    body{background:#0D2345;color:#C4D2EA;
+         font-family:system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+         display:flex;align-items:center;justify-content:center;text-align:center;}
+    .box{max-width:440px;padding:32px;}
+    .box h1{font-size:20px;color:#fff;font-weight:600;margin:0 0 10px;}
+    .box p{font-size:14px;line-height:1.65;margin:0;color:#9DB6C2;}
+    .box a{color:#34D1D4;text-decoration:none;border-bottom:1px solid rgba(52,209,212,.4);}
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>Taking you to the right place&hellip;</h1>
+    <p>If you are not redirected automatically, <a href="/">return to the Kairion Group homepage</a>.</p>
+  </div>
+
+  <!--
+    GitHub Pages serves this file for any URL that does not match a real file.
+    It maps "clean" paths (e.g. /services, /privacy) to their real destinations:
+      - homepage sections  ->  /#section  (single-page anchors)
+      - legal pages        ->  /page.html
+      - anything else      ->  /  (homepage)
+    This changes nothing about the site's design or content; it only prevents
+    dead-end 404s for typed or externally-linked URLs.
+  -->
+  <script>
+  (function () {
+    var SECTIONS = ['home','about','services','solutions','industries','cases','process','contact','how-it-works'];
+    var PAGES    = ['privacy','terms','cookies'];
+
+    function resolvePath(pathname) {
+      var slug = (pathname || '/').toLowerCase()
+                   .replace(/^\/+|\/+$/g, '')   // strip leading/trailing slashes
+                   .replace(/\.html$/, '');     // ignore a trailing .html
+      if (!slug) return '/';
+      if (PAGES.indexOf(slug) !== -1)    return '/' + slug + '.html';
+      if (SECTIONS.indexOf(slug) !== -1) return '/#' + slug;
+      return '/';
+    }
+
+    window.__resolvePath = resolvePath;               // exposed for QA testing
+    window.location.replace(resolvePath(window.location.pathname));
+  })();
+  </script>
+</body>
+</html>
